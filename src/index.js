@@ -3,6 +3,7 @@
 const express = require("express");
 const app = express();
 const routes = require("./routes");
+var path = require('path');
 
 const port = 3030;
 const address = "localhost";
@@ -13,6 +14,7 @@ app.use(express.static('public'));
 
 
 app.set('view engine','ejs');
+app.set('views', path.join(__dirname, '/views'));
 app.use(expressLayouts);
 
 app.use('/',routes);
