@@ -1,15 +1,15 @@
 {
-  "name": "app-example",
+  "name": "slideshow-am2",
   "version": "0.1.0",
-  "description": "My first application in Nodejs",
+  "description": "Gerador de slideshow para AM 2",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon",
+    "dev": "nodemon",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wwagner33/app-example.git"
+    "url": "git+https://github.com/noobmobile/trabalho-am2.git"
   },
   "keywords": [
     "web"
@@ -17,9 +17,9 @@
   "author": "Wellington Wagner F. Sarmento",
   "license": "GPL-3.0-or-later",
   "bugs": {
-    "url": "https://github.com/wwagner33/app-example/issues"
+    "url": "https://github.com/noobmobile/trabalho-am2/issues"
   },
-  "homepage": "https://github.com/wwagner33/app-example#readme",
+  "homepage": "https://github.com/noobmobile/trabalho-am2#readme",
   "devDependencies": {
     "nodemon": "^2.0.16"
   },
