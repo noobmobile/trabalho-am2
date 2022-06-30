@@ -9,7 +9,7 @@ function getAboutTeam(){
             }, 
             {
                 name: "Victor Mota",
-                photo: "https://i.imgur.com/l02Y5pC.jpg",
+                photo: "https://i.imgur.com/DHzzoeP.jpg",
                 matricula: "509223",
                 email: "victor2018mota@gmail.com"
             }
@@ -17,4 +17,4 @@ function getAboutTeam(){
     )
 }
 
-module.exports.getAboutTeam = getAboutTeam
+module.exports = {getAboutTeam}

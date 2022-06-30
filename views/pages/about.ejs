@@ -13,7 +13,7 @@
         justify-content: center;
         flex-direction: column;
         align-items: center;
-        padding: 10px;
+        padding: 20px;
         border-radius: 5px;
         box-shadow: 0 0 3px #999;
     }
@@ -25,6 +25,7 @@
     .dev-photo {
         width: 250px;
         height: 250px;
+        margin-bottom: 10px;
     }
     .dev-info {
         display: flex;
@@ -37,7 +38,9 @@
         margin-bottom: 20px;
     }
     .license {
-        float: right;
+        position: absolute;
+        bottom: 0;
+        right: 5px;
     }
 </style>
 <div>
@@ -49,7 +52,7 @@
                     <img src=<%= dev.photo %>/>
                 </div>
                 <div class="dev-info">
-                    <span><%= dev.name %></span>
+                    <b><%= dev.name %></b>
                     <span><%= dev.email %></span>
                 </div>
                 
