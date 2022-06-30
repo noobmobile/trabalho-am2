@@ -1,11 +1,12 @@
 const express = require("express");
-const { getAboutTeam } = require("./utils/utils");
+const { getAboutTeam, readText } = require("./utils/utils");
 const router = express.Router();
 
 router.use(express.static('public')); 
 
 router.get('/',(req,res)=>{
-    res.render("pages/home");
+    const text = readText("texts.csv");
+    res.render("pages/home", {text});
 }); 
 
 router.get('/about',(req,res)=>{
