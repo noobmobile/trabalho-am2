@@ -5,7 +5,7 @@ const router = express.Router();
 router.use(express.static('public')); 
 
 router.get('/',(req,res)=>{
-    const text = readText("texts.csv");
+    const text = readText("./resource/paragrafos.csv");
     res.render("pages/home", {text});
 }); 
 

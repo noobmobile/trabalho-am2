@@ -1,15 +1,18 @@
+const fs = require("fs");
+const csv = require('csv-parse/sync')
+
 function getAboutTeam(){
     return (
         [
             {
                 name: "Luiz Eduardo",
-                photo: "https://i.imgur.com/pLgxs0G.jpg",
+                photo: "/images/eduardo.jpg",
                 matricula: "509510",
                 email: "luizedugx@alu.ufc.br"
             }, 
             {
                 name: "Victor Mota",
-                photo: "https://i.imgur.com/DHzzoeP.jpg",
+                photo: "/images/victor.jpg",
                 matricula: "509223",
                 email: "victor2018mota@gmail.com"
             }
@@ -18,14 +21,10 @@ function getAboutTeam(){
 }
 
 function readText(fileName){
-    return (
-        [
-            "lorem ipsum dolor sit ametlorem ipsum dolor sit ametlorem ipsum dolor sit ametlorem ipsum dolor sit ametlorem ipsum dolor sit ametlorem ipsum dolor sit ametlorem ipsum dolor sit ametlorem ipsum dolor sit ametlorem ipsum dolor sit ametlorem ipsum dolor sit ametlorem ipsum dolor sit ametlorem ipsum dolor sit ametlorem ipsum dolor sit ametlorem ipsum dolor sit ametlorem ipsum dolor sit ametlorem ipsum dolor sit ametlorem ipsum dolor sit ametlorem ipsum dolor sit ametlorem ipsum dolor sit ametlorem ipsum dolor sit ametlorem ipsum dolor sit ametlorem ipsum dolor sit ametlorem ipsum dolor sit ametlorem ipsum dolor sit ametlorem ipsum dolor sit ametlorem ipsum dolor sit ametlorem ipsum dolor sit ametlorem ipsum dolor sit ametlorem ipsum dolor sit ametlorem ipsum dolor sit ametlorem ipsum dolor sit amet",
-            "lorem ipsum dolor sit amet 2",
-            "lorem ipsum dolor sit ame3t",
-            "lorem i4psum dolor sit amet"
-        ]
-    )
+    const content = fs.readFileSync(fileName)
+    const parsed = csv.parse(content, {columns: false, delimiter: '#'})
+
+    return parsed[0]
 }
 
 module.exports = {

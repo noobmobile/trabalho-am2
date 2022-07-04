@@ -10,8 +10,7 @@ const address = "localhost";
 
 const expressLayouts = require('express-ejs-layouts');
 
-app.use(express.static('public'));
-
+app.use(express.static(__dirname + '/public'));
 
 app.set('view engine','ejs');
 app.set('views', path.join(__dirname, '/views'));
