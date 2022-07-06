@@ -5,7 +5,6 @@
   max-width: 1000px;
   position: relative;
   margin: auto;
-  background: black;
   margin-top: 20px;
 }
 
@@ -13,6 +12,7 @@
 .mySlides {
   display: none;
   height: 500px;
+  position: relative;
 }
 
 /* Next & previous buttons */
@@ -64,6 +64,8 @@
   padding: 8px 12px;
   position: absolute;
   top: 0;
+  font-weight: bold;
+  text-shadow: 0 0 3px black;
 }
 
 /* The dots/bullets/indicators */
@@ -92,31 +94,44 @@
   from {opacity: .4}
   to {opacity: 1}
 }
+
+.search-container{
+  display: flex;
+  margin-bottom: 10px;
+}
+.text-search {
+  margin-right: 10px;
+}
 </style>
 
 <div class="slideshow-container">
-
-    <% for(let index = 0; index < text.length; index++) {%>
-        <div class="mySlides fade2">
-            <div class="numbertext">
-                <%= index + 1 %> / <%= text.length %>
-            </div>
-            <div class="text">
-                <%= text[index] %>
-            </div>
-          </div>
-        <% } %>
-  
-    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+  <div class="search-container">
+    <input type="text" class="form-control text-search" placeholder="Palavra">
+    <button type="button" class="btn btn-primary text-button">Pesquisar</button>
   </div>
-  <br>
-  
-  <!-- The dots/circles -->
-  <div style="text-align:center">
+   <div>
     <% for(let index = 0; index < text.length; index++) {%>
-        <span class="dot" onclick=<%= `currentSlide(${index+1})` %>></span>
-        <% } %>
+      <div class="mySlides fade2">
+          <div class="numbertext">
+              <%= index + 1 %> / <%= text.length %>
+          </div>
+          <div class="text">
+              <%= text[index] %>
+          </div>
+        </div>
+      <% } %>
+
+  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+  <a class="next" onclick="plusSlides(1)">&#10095;</a>
+</div>
+<br>
+
+<!-- The dots/circles -->
+<div style="text-align:center">
+  <% for(let index = 0; index < text.length; index++) {%>
+      <span class="dot" onclick=<%= `currentSlide(${index+1})` %>></span>
+      <% } %>
+   </div>
 </div>
 
 <script>
@@ -137,7 +152,6 @@
       let i;
       let slides = document.getElementsByClassName("mySlides");
       let dots = document.getElementsByClassName("dot");
-      let background = document.getElementsByClassName("slideshow-container")[0];
       if (n > slides.length) {slideIndex = 1}
       if (n < 1) {slideIndex = slides.length}
       for (i = 0; i < slides.length; i++) {
@@ -150,8 +164,40 @@
       dots[slideIndex-1].className += " active-slide";
       
       const randomImage = `/images/${Math.floor(Math.random() * 10) + 1}.jpg`
-      background.style.background = `black url("${randomImage}") no-repeat fixed center`
-      background.style.backgroundSize = `auto`
+      for (const background of slides){
+        background.style.background = `black url("${randomImage}") no-repeat fixed center`
+        background.style.backgroundSize = `auto`
+      }
+     
     }
 </script>
-    
+
+<script>
+  // highlight nas palavras pesquisadas
+  let btn = document.querySelector(".text-button");
+  btn.addEventListener("click", () => {
+    let elements = document.getElementsByClassName("text");
+    for (const element of elements){
+      const innerHTML = element.innerHTML
+      let text = document.querySelector(".text-search").value;
+      let matches = innerHTML.toLowerCase().includes(text.toLowerCase())
+      if (matches) {
+        let result = innerHTML.replace(
+          new RegExp(text + "(?!([^<]+)?<)", "gi"),
+          '<b style="background-color:#ff0;font-size:100%">$&</b>'
+        );
+
+        element.innerHTML = result;
+      }
+    }
+  });
+
+  // permitir apenas uma palavra
+  const search = document.querySelector(".text-search")
+  search.addEventListener("change", (e) => {
+    const value = e.target.value
+    if (value.split(" ").length > 1){
+      e.target.value = value.split(" ")[0]
+    }
+  })
+</script>
