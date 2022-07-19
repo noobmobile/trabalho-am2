@@ -7,10 +7,10 @@ A aplicação consiste basicamente na navegação entre slides gerados dinamicam
 
 ## Equipe Servy
 
-|  NOME                           |  FUNÇÃO                    |  MATRÍCULA  |
-|  ----------------------------   |  --------------------------|  ---------  |
-|  Luiz Eduardo Gomes Xavier      |  Codificação               |  509510     |
-|  Victor Mota Dos Santos         |  Codificação               |  509223     |
+|  NOME                           |  FUNÇÃO                    |
+|  ----------------------------   |  --------------------------|
+|  Luiz Eduardo Gomes Xavier      |  Codificação               |
+|  Victor Mota Dos Santos         |  Codificação               |
 
 ## Como rodar
 
